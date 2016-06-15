@@ -83,3 +83,9 @@ footer {
 footer p {
   margin-bottom: .25rem;
 }
+
+@import "_variables-edited.scss";
+
+h1 {
+  color: $brand-primary;
+}
