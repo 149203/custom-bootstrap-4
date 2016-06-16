@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,19 +15,67 @@
     <!-- Custom styles for this template -->
     <link href="css/custom.css" rel="stylesheet">
 
-  </head>
+</head>
 
-  <body>
-  <h1>HELLO WORLD!</h1>
-  <h2>Goodbye now.</h2>
+<body>
+
+<div class="slideshow-wrapper">
+    <div class="cycle-slideshow" data-cycle-speed="1500" data-cycle-loader=true>
+        <img src="http://mikeziethlow.com/fcc/twitchlist/twitchlist-jumbo-1.jpg">
+        <img src="http://mikeziethlow.com/fcc/twitchlist/twitchlist-jumbo-2.jpg">
+        <img src="http://mikeziethlow.com/fcc/twitchlist/twitchlist-jumbo-3.jpg">
+        <img src="http://mikeziethlow.com/fcc/twitchlist/twitchlist-jumbo-4.jpg">
+        <img src="http://mikeziethlow.com/fcc/twitchlist/twitchlist-jumbo-5.jpg">
+    </div>
+    <!--cycle-slideshow-->
+    <div class="slide-overlay">
+        <h1>TwitchList</h1>
+        <h2>24/7 gaming with friends</h2>
+    </div>
+</div>
+<!--slideshow-wrapper-->
+
+<br>
+<div class="pure-container">
+    <div class="pure-g">
+        <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-1-2 pure-gutter">
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Add a Twitch username">
+            <span class="input-group-btn">
+      <button class="btn btn-default btn-nopad" type="button"><span
+              style="font-size:1.85em;">&nbsp;&nbsp;+&nbsp;&nbsp;</span></button>
+            </span>
+                </div>
+                <!--input-group-->
+            </div>
+            <!--form-group-->
+        </div>
+        <!--pure-u-->
+
+        <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-1-2">
+
+            <select class="form-control" id="select" style="display:inline-block;">
+                <option value="" disabled selected>Sort by</option>
+                <option value="name">Name</option>
+                <option value="viewers">Viewers</option>
+            </select>
+        </div>
+        <!--pure-u-->
+    </div>
+    <!--pure-g-->
+    <h3>Twitch friends:</h3>
+    <div class="panel">Hello world</div>
+</div>
+<!--container-->
 
 
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
-    <script src="client/main.js"></script>
-  </body>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js"></script>
+<script src="http://mikeziethlow.com/fcc/twitchlist/jquery.cycle2.js"></script>
+<script src="client/main.js"></script>
+</body>
 </html>

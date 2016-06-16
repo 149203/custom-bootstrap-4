@@ -1,0 +1,43 @@
+.cycle-slideshow {
+  width: 100%;
+}
+
+.cycle-slideshow img {
+  width: 100%;
+  height: auto;
+  min-height: 240px;
+  object-fit: cover;
+}
+
+.slideshow-wrapper {
+  position: relative;
+  z-index: -1000;
+}
+
+h1 {
+  font-size: 9em;
+  margin-top: 0px;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 3.71em;
+  margin-top: 0px;
+}
+
+.slide-overlay {
+  bottom: 0;
+  height: 200px;
+  left: 0;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 588px;
+  z-index: 100;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  line-height: .94;
+  color: white;
+}
