@@ -12,6 +12,9 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
+    <!-- Font Awesome -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <link href="css/custom.css" rel="stylesheet">
 
@@ -36,36 +39,24 @@
 <!--slideshow-wrapper-->
 
 <br>
-<div class="pure-container">
-    <div class="pure-g">
-        <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-1-2 pure-gutter">
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7 col-md-offset-1 col-lg-5 col-lg-offset-2 col-xl-6 col-xl-offset-2">
             <div class="form-group">
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Add a Twitch username">
             <span class="input-group-btn">
-      <button class="btn btn-default btn-nopad" type="button"><span
-              style="font-size:1.85em;">&nbsp;&nbsp;+&nbsp;&nbsp;</span></button>
+      <button class="btn btn-info" type="button">&nbsp;<i class="fa fa-plus fa-lg"
+                                                          aria-hidden="true"></i>&nbsp;</button>
             </span>
-                </div>
-                <!--input-group-->
-            </div>
-            <!--form-group-->
-        </div>
-        <!--pure-u-->
-
-        <div class="pure-u-1 pure-u-sm-1-2 pure-u-md-1-2 pure-u-lg-1-2">
-
-            <select class="form-control" id="select" style="display:inline-block;">
-                <option value="" disabled selected>Sort by</option>
-                <option value="name">Name</option>
-                <option value="viewers">Viewers</option>
-            </select>
-        </div>
-        <!--pure-u-->
-    </div>
-    <!--pure-g-->
+                </div> <!--input-group-->
+            </div> <!--form-group-->
+        </div> <!--col-->
+        <div class="col-xs-12 col-sm-5 col-md-3 col-lg-3 col-xl-2">
+            <button class="btn btn-info pull-right btn-block">Sort by: Name</button>
+        </div> <!--col-->
+    </div> <!--row-->
     <h3>Twitch friends:</h3>
-    <div class="panel">Hello world</div>
 </div>
 <!--container-->
 
