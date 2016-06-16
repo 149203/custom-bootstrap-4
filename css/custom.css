@@ -1,3 +1,20 @@
-
+/*
+h1 {
+  @include xs {
+    color: $brand-primary;
+  }
+  @include sm {
+    color: $brand-danger;
+  }
+  @include md {
+    color: $brand-info;
+  }
+  @include lg {
+    color: $brand-success;
+  }
+  @include xl {
+    color: $brand-warning;
+  }
+}*/
 
 /*# sourceMappingURL=custom.css.map */

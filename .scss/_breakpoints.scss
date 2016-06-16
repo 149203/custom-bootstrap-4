@@ -1,0 +1,62 @@
+// Variables for Breakpoints
+// ------------------------------------------
+$bp1: 480px;
+$bp2: 720px;
+$bp3: 960px;
+$bp4: 1200px;
+
+
+// Mixins for Breakpoints
+// ------------------------------------------
+@mixin xs {
+  @media (max-width: $bp1 - 1) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (min-width: $bp1) and (max-width: $bp2 - 1) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: $bp2) and (max-width: $bp3 - 1) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: $bp3) and (max-width: $bp4 - 1) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: $bp4) {
+    @content;
+  }
+}
+
+
+// Usage of the Breakpoints Mixins
+// ------------------------------------------
+
+/*
+h1 {
+  @include xs {
+    color: $brand-primary;
+  }
+  @include sm {
+    color: $brand-danger;
+  }
+  @include md {
+    color: $brand-info;
+  }
+  @include lg {
+    color: $brand-success;
+  }
+  @include xl {
+    color: $brand-warning;
+  }
+}*/
