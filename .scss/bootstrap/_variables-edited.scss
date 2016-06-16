@@ -1,3 +1,9 @@
+// Variables
+//
+// Copy settings from this file into the provided `_custom.scss` to override
+// the Bootstrap defaults without modifying key, versioned files.
+
+
 // Table of Contents
 //
 // Colors
@@ -26,7 +32,7 @@ $gray-light:                #818a91 !default;
 $gray-lighter:              #eceeef !default;
 $gray-lightest:             #f7f7f9 !default;
 
-$brand-primary:             #ffc0cb !default;
+$brand-primary:             #d8265e !default;
 $brand-success:             #5cb85c !default;
 $brand-info:                #5bc0de !default;
 $brand-warning:             #f0ad4e !default;
@@ -38,9 +44,9 @@ $brand-danger:              #d9534f !default;
 // Quickly modify global styling by enabling or disabling optional features.
 
 $enable-flex:               false !default;
-$enable-rounded:            true !default;
+$enable-rounded:            false !default;
 $enable-shadows:            false !default;
-$enable-gradients:          false !default;
+$enable-gradients:          true !default;
 $enable-transitions:        false !default;
 $enable-hover-media-query:  false !default;
 $enable-grid-classes:       true !default;
@@ -55,22 +61,22 @@ $spacer:                     1rem !default;
 $spacer-x:                   $spacer !default;
 $spacer-y:                   $spacer !default;
 $spacers: (
-        0: (
-                x:   0,
-                y:   0
-        ),
-        1: (
-                x:   $spacer-x,
-                y:   $spacer-y
-        ),
-        2: (
-                x:   ($spacer-x * 1.5),
-                y:   ($spacer-y * 1.5)
-        ),
-        3: (
-                x:   ($spacer-x * 3),
-                y:   ($spacer-y * 3)
-        )
+  0: (
+    x:   0,
+    y:   0
+  ),
+  1: (
+    x:   $spacer-x,
+    y:   $spacer-y
+  ),
+  2: (
+    x:   ($spacer-x * 1.5),
+    y:   ($spacer-y * 1.5)
+  ),
+  3: (
+    x:   ($spacer-x * 3),
+    y:   ($spacer-y * 3)
+  )
 ) !default;
 $border-width:               1px !default;
 
@@ -100,15 +106,15 @@ $link-hover-decoration:      underline !default;
 
 $grid-breakpoints: (
   // Extra small screen / phone
-        xs: 0,
+  xs: 0,
   // Small screen / phone
-        sm: 480px,
+  sm: 544px,
   // Medium screen / tablet
-        md: 720px,
+  md: 768px,
   // Large screen / desktop
-        lg: 960px,
+  lg: 992px,
   // Extra large screen / wide desktop
-        xl: 1200px
+  xl: 1200px
 ) !default;
 
 
@@ -117,10 +123,10 @@ $grid-breakpoints: (
 // Define the maximum width of `.container` for different screen sizes.
 
 $container-max-widths: (
-        sm: 480px,
-        md: 700px,
-        lg: 930px,
-        xl: 1160px
+  sm: 576px,
+  md: 720px,
+  lg: 940px,
+  xl: 1140px
 ) !default;
 
 
