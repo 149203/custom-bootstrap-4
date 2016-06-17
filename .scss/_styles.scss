@@ -1,3 +1,7 @@
+.container-fluid {
+  padding: 0;
+}
+
 .cycle-slideshow {
   width: 100%;
 }
@@ -9,20 +13,57 @@
   object-fit: cover;
 }
 
+.card {
+  background-color: $brand-info;
+  border: none;
+  @include md {
+    height: 20.5rem; // 296px
+  }
+  @include lg {
+    height: 19rem; // 296px
+  }
+  @include xl {
+    height: 18.5rem; // 296px
+  }
+}
+
+.card:hover {
+  background-color: darken($brand-info, 17%);
+  transition: all 0.25s ease-in-out;
+}
+
+.text-muted {
+  color: $gray-lighter;
+}
+
+.sort-toggle {
+  margin-bottom: 1rem;
+}
+
+.pattern {
+  background-color: #000005;
+  background-image: url("../public/dark-mosaic.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
 .slideshow-wrapper {
   position: relative;
   z-index: -1000;
 }
 
-.slide-overlay {
-  bottom: 0;
-  height: 200px;
-  left: 0;
-  margin: auto;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 320px;
-  z-index: 100;
-}
+/*.slide-overlay {
+  @include xs {
+    font-size: 6em !important;
+    bottom: 0;
+    height: 200px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 320px;
+    z-index: 100;
+  }
+}*/
+
 

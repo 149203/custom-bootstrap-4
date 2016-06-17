@@ -93,10 +93,10 @@ $body-color:                 #fff !default;
 //
 // Style anchor elements.
 
-$link-color:                 $brand-primary !default;
+$link-color:                 #fff !default;
 $link-decoration:            none !default;
-$link-hover-color:           darken($link-color, 15%) !default;
-$link-hover-decoration:      underline !default;
+$link-hover-color:           $link-color !default;
+$link-hover-decoration:      none !default;
 
 
 // Grid breakpoints
@@ -141,8 +141,6 @@ $grid-gutter-width:          1.875rem !default; // 30px
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.
-
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
 
 $font-family-sans-serif:     Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif:          Georgia, "Times New Roman", Times, serif !default;
