@@ -9,7 +9,7 @@
 .cycle-slideshow img {
   width: 100%;
   height: auto;
-  min-height: 240px;
+  min-height: 180px;
   object-fit: cover;
 }
 
@@ -46,24 +46,21 @@
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
-.slideshow-wrapper {
+#slideshow-wrapper {
   position: relative;
   z-index: -1000;
 }
 
-/*.slide-overlay {
+#logo-box {
+  position: absolute;
+  z-index: 1000;
+  //float: left;
+  width: 95%;
+  line-height: 0.9;
+}
+
+#logo-box span {
   @include xs {
-    font-size: 6em !important;
-    bottom: 0;
-    height: 200px;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 320px;
-    z-index: 100;
+    margin-left: -.6rem;
   }
-}*/
-
-
+}
