@@ -54,8 +54,7 @@ element {
 
 .pattern {
   background-color: #000005;
-  background-image: url("../public/dark-mosaic.png");
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */ }
+  background-image: url("../public/dark-mosaic.png"); }
 
 #slideshow-wrapper {
   position: relative;

@@ -9,7 +9,7 @@ $(window).load(function () {
 let resizeId;
 $(window).resize(function () {
    clearTimeout(resizeId);
-   resizeId = setTimeout(doneResizing, 200);
+   resizeId = setTimeout(doneResizing, 200); // sets the milliseconds to wait before completing resizing functions
 });
 
 function doneResizing() {
