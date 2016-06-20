@@ -17,21 +17,18 @@ $(document).ready(function () {
       event.preventDefault();
    });
    
-   $("#sort-button").click(function (event) {
+   $("#sort-button").click(function () {
       if (this.value === "views") {
-         $("#sort-button").html("Sorting by: Name");
-         sortByName(displayMasterArr);
          this.value = "name";
+         $("#sort-button").html("Sorting by: Name");
+         toggleSort(displayMasterArr);
       }
       else {
-         $("#sort-button").html("Sorting by: Views");
-         sortByOrder(displayMasterArr);
          this.value = "views";
+         $("#sort-button").html("Sorting by: Views");
+         toggleSort(displayMasterArr);
       }
-      
    });
-
-
 });
 
 $(window).load(function () {
@@ -127,7 +124,7 @@ function processDataFromLive(dataArr, fetchStreamFromInput) {
       masterArr.push(obj);
       countdown--;
       if (countdown === 0) {
-         sortByOrder(displayMasterArr);
+         toggleSort(displayMasterArr);
       }
    });
 
@@ -144,13 +141,13 @@ function fetchStreamFromInput(userInput, processDataFromInput) {
             obj.name = userInput;
             obj.data = data;
             arrFromNames.push(obj);
-            processDataFromInput(arrFromNames, sortByOrder);
+            processDataFromInput(arrFromNames, toggleSort);
          }
       });
    }
 }
 
-function processDataFromInput(arrFromNames, sortByOrder) {
+function processDataFromInput(arrFromNames, toggleSort) {
    arrFromNames.forEach(function (fetchedName) {
       let obj = {};
       obj.name = fetchedName.name;
@@ -176,18 +173,19 @@ function processDataFromInput(arrFromNames, sortByOrder) {
          obj.image = `public/twitchlist-closed-${_.random(1, 9)}.jpg`;
       }
       masterArr.push(obj);
-      sortByOrder(displayMasterArr);
+      toggleSort(displayMasterArr);
    });
 }
 
-function sortByOrder(displayMasterArr) {
-   let sortedArr = _.orderBy(masterArr, ['order', 'name'], ['desc', 'asc']);
-   displayMasterArr(sortedArr);
-}
-
-function sortByName(displayMasterArr) {
-   let sortedArr = _.orderBy(masterArr, ['name', 'order'], ['asc', 'desc']);
-   displayMasterArr(sortedArr);
+function toggleSort(displayMasterArr) {
+   if ($("#sort-button").val() === "views") {
+      let sortedArr = _.orderBy(masterArr, ['order', 'name'], ['desc', 'asc']);
+      displayMasterArr(sortedArr);
+   }
+   else if (($("#sort-button").val() === "name")) {
+      let sortedArr = _.orderBy(masterArr, ['name', 'order'], ['asc', 'desc']);
+      displayMasterArr(sortedArr);
+   }
 }
 
 function displayMasterArr(sortedArr) {
