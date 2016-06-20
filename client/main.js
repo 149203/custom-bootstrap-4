@@ -6,6 +6,19 @@ let masterArr = [];
 $(document).ready(function () {
    $('#logo-box').bigtext();
    fetchStreamsFromNames(presetNames, processDataFromNames);
+
+   $("#input-form").submit(function (event) {
+      let userInput = encodeURIComponent($("#input-text").val());
+      fetchStreamFromInput(userInput, processDataFromInput);
+      event.preventDefault();
+   });
+   $("#input-button").click(function (event) {
+      let userInput = encodeURIComponent($("#input-text").val());
+      fetchStreamFromInput(userInput, processDataFromInput);
+      event.preventDefault();
+   });
+
+
 });
 
 $(window).load(function () {
@@ -53,7 +66,7 @@ function fetchStreamsFromNames(nameArr, processDataFromNames) {
 }
 
 function processDataFromNames(arrFromNames, fetchStreamsFromLive) {
-   arrFromNames.forEach(function (fetchedName){
+   arrFromNames.forEach(function (fetchedName) {
       let obj = {};
       obj.name = fetchedName.name;
       if (_.has(fetchedName.data.stream, 'preview')) {
@@ -68,14 +81,14 @@ function processDataFromNames(arrFromNames, fetchStreamsFromLive) {
          obj.link = "https://www.twitch.tv/" + fetchedName.name;
          obj.viewers = 0;
          obj.order = 0;
-         obj.image = `public/twitchlist-offline-${_.random(1,9)}.jpg`;
+         obj.image = `public/twitchlist-offline-${_.random(1, 9)}.jpg`;
       }
       else {
          obj.status = "Account closed or nonexistent";
          obj.link = "https://www.twitch.tv/" + fetchedName.name;
          obj.viewers = 0;
          obj.order = -1;
-         obj.image = `public/twitchlist-closed-${_.random(1,9)}.jpg`;
+         obj.image = `public/twitchlist-closed-${_.random(1, 9)}.jpg`;
       }
       masterArr.push(obj);
    });
@@ -101,24 +114,63 @@ function processDataFromLive(dataArr, fetchStreamFromInput) {
       masterArr.push(obj);
       countdown--;
       if (countdown === 0) {
-         fetchStreamFromInput(processDataFromInput);
+         sortByOrder(displayMasterArr);
       }
    });
 
 }
 
-function fetchStreamFromInput(processDataFromInput) {
-   // don't forget to URI encode!
-   processDataFromInput(sortByOrder);
+function fetchStreamFromInput(userInput, processDataFromInput) {
+   let arrFromNames = [];
+   if (userInput != "") {
+      $.ajax({
+         url: "https://api.twitch.tv/kraken/streams/" + userInput,
+         dataType: 'jsonp',
+         success: function (data) {
+            let obj = {};
+            obj.name = name;
+            obj.data = data;
+            arrFromNames.push(obj);
+            processDataFromInput(arrFromNames, sortByOrder);
+         }
+      });
+   }
 }
 
-function processDataFromInput(sortByOrder) {
-   sortByOrder(displayMasterArr);
-
+function processDataFromInput(arrFromNames, sortByOrder) {
+   arrFromNames.forEach(function (fetchedName) {
+      let obj = {};
+      obj.name = fetchedName.data.stream.channel.name;
+      if (_.has(fetchedName.data.stream, 'preview')) {
+         obj.status = _.truncate(fetchedName.data.stream.channel.status, {'length': truncateStatusLength});
+         obj.link = fetchedName.data.stream.channel.url;
+         obj.viewers = fetchedName.data.stream.viewers;
+         obj.order = fetchedName.data.stream.viewers;
+         obj.image = fetchedName.data.stream.preview.large;
+      }
+      else if (fetchedName.data.stream === null) {
+         obj.status = "Offline";
+         obj.link = "https://www.twitch.tv/" + fetchedName.name;
+         obj.viewers = 0;
+         obj.order = 0;
+         obj.image = `public/twitchlist-offline-${_.random(1, 9)}.jpg`;
+      }
+      else {
+         obj.status = "Account closed or nonexistent";
+         obj.link = "https://www.twitch.tv/" + fetchedName.name;
+         obj.viewers = 0;
+         obj.order = -1;
+         obj.image = `public/twitchlist-closed-${_.random(1, 9)}.jpg`;
+      }
+      masterArr.push(obj);
+      sortByOrder(displayMasterArr);
+   });
 }
 
 function sortByOrder(displayMasterArr) {
-   let sortedArr = _.sortBy(masterArr, function(obj) { return obj.order; }).reverse();
+   let sortedArr = _.sortBy(masterArr, function (obj) {
+      return obj.order;
+   }).reverse();
    displayMasterArr(sortedArr);
 }
 
@@ -127,8 +179,8 @@ function sortByName(formattedArr) {
 }
 
 function displayMasterArr(sortedArr) {
-   $( "#streams-parent" ).empty(); // empties the previous results
-   $.each(sortedArr, function(index, obj) {
+   $("#streams-parent").empty(); // empties the previous results
+   $.each(sortedArr, function (index, obj) {
       $("#streams-parent").append(`<a href="${obj.link}" target="_blank"><div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3"><div class="card"><img class="card-img-top img-fluid" src="${obj.image}"><div class="card-block"><h4 class="card-title">${obj.name}</h4><p class="card-text"><span class="text-muted">Viewers:&nbsp;</span>${obj.viewers}<br/><span class="text-muted">Status:&nbsp;</span>${obj.status}</p></div></div></div></a>`);
    });
 }
