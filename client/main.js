@@ -1,4 +1,3 @@
-const truncateStatusLength = 38;
 const presetNames = ["freecodecamp", "comster404"];
 const liveStreamers = 5;
 let masterArr = [];
@@ -16,6 +15,20 @@ $(document).ready(function () {
       let userInput = encodeURIComponent($("#input-text").val());
       fetchStreamFromInput(userInput, processDataFromInput);
       event.preventDefault();
+   });
+   
+   $("#sort-button").click(function (event) {
+      if (this.value === "views") {
+         $("#sort-button").html("Sorting by: Name");
+         sortByName(displayMasterArr);
+         this.value = "name";
+      }
+      else {
+         $("#sort-button").html("Sorting by: Views");
+         sortByOrder(displayMasterArr);
+         this.value = "views";
+      }
+      
    });
 
 
@@ -70,7 +83,7 @@ function processDataFromNames(arrFromNames, fetchStreamsFromLive) {
       let obj = {};
       obj.name = fetchedName.name;
       if (_.has(fetchedName.data.stream, 'preview')) {
-         obj.status = _.truncate(fetchedName.data.stream.channel.status, {'length': truncateStatusLength});
+         obj.status = fetchedName.data.stream.channel.status;
          obj.link = fetchedName.data.stream.channel.url;
          obj.viewers = fetchedName.data.stream.viewers;
          obj.order = fetchedName.data.stream.viewers;
@@ -106,7 +119,7 @@ function processDataFromLive(dataArr, fetchStreamFromInput) {
    dataArr.forEach(function (data) {
       let obj = {};
       obj.name = data.channel.name;
-      obj.status = _.truncate(data.channel.status, {'length': truncateStatusLength});
+      obj.status = data.channel.status;
       obj.link = data.channel.url;
       obj.viewers = data.viewers;
       obj.order = data.viewers;
@@ -128,7 +141,7 @@ function fetchStreamFromInput(userInput, processDataFromInput) {
          dataType: 'jsonp',
          success: function (data) {
             let obj = {};
-            obj.name = name;
+            obj.name = userInput;
             obj.data = data;
             arrFromNames.push(obj);
             processDataFromInput(arrFromNames, sortByOrder);
@@ -140,9 +153,9 @@ function fetchStreamFromInput(userInput, processDataFromInput) {
 function processDataFromInput(arrFromNames, sortByOrder) {
    arrFromNames.forEach(function (fetchedName) {
       let obj = {};
-      obj.name = fetchedName.data.stream.channel.name;
+      obj.name = fetchedName.name;
       if (_.has(fetchedName.data.stream, 'preview')) {
-         obj.status = _.truncate(fetchedName.data.stream.channel.status, {'length': truncateStatusLength});
+         obj.status = fetchedName.data.stream.channel.status;
          obj.link = fetchedName.data.stream.channel.url;
          obj.viewers = fetchedName.data.stream.viewers;
          obj.order = fetchedName.data.stream.viewers;
@@ -168,14 +181,13 @@ function processDataFromInput(arrFromNames, sortByOrder) {
 }
 
 function sortByOrder(displayMasterArr) {
-   let sortedArr = _.sortBy(masterArr, function (obj) {
-      return obj.order;
-   }).reverse();
+   let sortedArr = _.orderBy(masterArr, ['order', 'name'], ['desc', 'asc']);
    displayMasterArr(sortedArr);
 }
 
-function sortByName(formattedArr) {
-
+function sortByName(displayMasterArr) {
+   let sortedArr = _.orderBy(masterArr, ['name', 'order'], ['asc', 'desc']);
+   displayMasterArr(sortedArr);
 }
 
 function displayMasterArr(sortedArr) {

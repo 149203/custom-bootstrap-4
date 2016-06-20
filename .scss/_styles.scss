@@ -63,3 +63,17 @@
     margin-left: -.6rem;
   }
 }
+
+p.card-text {
+  word-wrap: break-word;
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+p.card-text span {
+  font-size: 0.9rem;
+}
