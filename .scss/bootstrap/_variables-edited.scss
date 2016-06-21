@@ -34,7 +34,7 @@ $gray-lightest:             #f7f7f9 !default;
 
 $brand-primary:             #0275d8 !default;
 $brand-success:             #5cb85c !default;
-$brand-info:                #5bc0de !default;
+$brand-info:                $gray !default;
 $brand-warning:             #f0ad4e !default;
 $brand-danger:              #d9534f !default;
 
@@ -43,8 +43,8 @@ $brand-danger:              #d9534f !default;
 //
 // Quickly modify global styling by enabling or disabling optional features.
 
-$enable-flex:               true !default;
-$enable-rounded:            false !default;
+$enable-flex:               false !default;
+$enable-rounded:            true !default;
 $enable-shadows:            false !default;
 $enable-gradients:          true !default;
 $enable-transitions:        true !default;
@@ -85,18 +85,18 @@ $border-width:               1px !default;
 //
 // Settings for the `<body>` element.
 
-$body-bg:                    #fff !default;
-$body-color:                 $gray-dark !default;
+$body-bg:                    #000 !default;
+$body-color:                 #fff !default;
 
 
 // Links
 //
 // Style anchor elements.
 
-$link-color:                 $brand-primary !default;
+$link-color:                 #fff !default;
 $link-decoration:            none !default;
-$link-hover-color:           darken($link-color, 15%) !default;
-$link-hover-decoration:      underline !default;
+$link-hover-color:           $link-color !default;
+$link-hover-decoration:      none !default;
 
 
 // Grid breakpoints
@@ -142,7 +142,7 @@ $grid-gutter-width:          1.875rem !default; // 30px
 //
 // Font, line-height, and color for body text, headings, and more.
 
-$font-family-sans-serif:     "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-sans-serif:     Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif:          Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:      Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:           $font-family-sans-serif !default;
