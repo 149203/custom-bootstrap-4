@@ -1,4 +1,4 @@
-
+# WARNING: This is no longer a good starter. Can be deleted.
 
 ## DEPRECATED custom-bootstrap-4
 A custom bootstrap starter templated, dogfooded.
