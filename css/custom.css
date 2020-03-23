@@ -1,21 +1,3 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
-/*
-element {
-  @include xs {
-    color: $brand-primary;
-  }
-  @include sm {
-    color: $brand-danger;
-  }
-  @include md {
-    color: $brand-info;
-  }
-  @include lg {
-    color: $brand-success;
-  }
-  @include xl {
-    color: $brand-warning;
-  }
-}*/
 
 /*# sourceMappingURL=custom.css.map */
